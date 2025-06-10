@@ -19,6 +19,9 @@ import { VersionModule } from './version/version.module';
         force: false,
       },
       logging: process.env.DB_SQL_LOG == '1',
+      dialectOptions: {
+        ssl: process.env.DB_SSL === '1',
+      },
     }),
     VersionModule,
   ],
