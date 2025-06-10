@@ -20,7 +20,13 @@ import { VersionModule } from './version/version.module';
       },
       logging: process.env.DB_SQL_LOG == '1',
       dialectOptions: {
-        ssl: process.env.DB_SSL === '1',
+        ssl:
+          process.env.DB_SSL === '1'
+            ? {
+                require: true,
+                rejectUnauthorized: false,
+              }
+            : false,
       },
     }),
     VersionModule,
