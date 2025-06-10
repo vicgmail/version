@@ -7,4 +7,5 @@ module.exports = {
   port: +process.env.DB_PORT,
   database: process.env.DB_NAME,
   dialect: 'postgres',
+  ssl: process.env.DB_SSL === '1',
 };

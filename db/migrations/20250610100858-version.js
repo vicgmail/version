@@ -1,7 +1,7 @@
 'use strict';
 
 const tableName = 'Version';
-const ENV = ['dev', 'prod'];
+const ENV = ['dev', 'production'];
 
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -61,19 +61,19 @@ module.exports = {
 
         await queryInterface.bulkInsert(tableName, [
         {
-          env: 'dev',
+          env: ENV[0],
           major: 1,
           minor: 0,
           build: 1,
         },
         {
-          env: 'dev',
+          env: ENV[0],
           major: 1,
           minor: 0,
           build: 2,
         },
         {
-          env: 'prod',
+          env: ENV[1],
           major: 1,
           minor: 0,
           build: 3,
@@ -86,7 +86,7 @@ module.exports = {
     }
   },
 
-  async down (queryInterface, Sequelize) {
+  async down (queryInterface) {
     await queryInterface.dropTable(tableName);
   }
 };
