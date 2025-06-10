@@ -1,0 +1,7 @@
+// Import the path module to work with file paths
+const path = require("path");
+
+module.exports = {
+  config: path.resolve("db/config", "sequelize.config.js"),
+  "migrations-path": path.resolve("db", "migrations"),
+};
