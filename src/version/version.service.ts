@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 
 import { Version } from './version.model';
 import { NODE_ENV } from 'src/constants/env';
+import { CreateVersionDto } from './version.dto';
 
 @Injectable()
 export class VersionService {
@@ -26,5 +27,15 @@ export class VersionService {
     }
 
     return `${version.major}.${version.minor}.${version.build}`;
+  }
+
+  async create(data: CreateVersionDto): Promise<Version | void> {
+    const newVersion = { ...data, env: NODE_ENV };
+
+    console.log('Add new version:', newVersion);
+
+    return await this.versionModel
+      .create(newVersion)
+      .catch((e) => console.error(e));
   }
 }

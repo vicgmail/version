@@ -8,5 +8,6 @@ import { Version } from './version.model';
   imports: [SequelizeModule.forFeature([Version])],
   providers: [VersionService],
   controllers: [VersionController],
+  exports: [VersionService],
 })
 export class VersionModule {}

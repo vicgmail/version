@@ -11,8 +11,6 @@ module.exports = {
         .then((data) => (Object.entries(data)?.length ? true : false))
         .catch(() => false);
 
-      console.log('isExistingTable:', isExistingTable);
-
       if (!isExistingTable) {
           await queryInterface.createTable(tableName, {
             id: {

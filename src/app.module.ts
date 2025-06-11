@@ -1,8 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { ScheduleModule } from '@nestjs/schedule';
 
 import { VersionModule } from './version/version.module';
+import { ScheduleService } from './schedule/schedule.service';
+import { VersionPlanService } from './version-plan/version-plan.service';
 
 @Module({
   imports: [
@@ -29,7 +32,9 @@ import { VersionModule } from './version/version.module';
             : false,
       },
     }),
+    ScheduleModule.forRoot(),
     VersionModule,
   ],
+  providers: [ScheduleService, VersionPlanService],
 })
 export class AppModule {}

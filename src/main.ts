@@ -3,9 +3,16 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 import { AppModule } from './app.module';
 import { ENV } from './constants/env';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+    }),
+  );
 
   if (process.env.NODE_ENV === ENV.DEVELOPMENT) {
     const swaggerConfig = new DocumentBuilder()

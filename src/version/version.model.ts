@@ -6,7 +6,7 @@ import { ENV } from 'src/constants/env';
   timestamps: true,
   tableName: 'Version',
 })
-export class Version extends Model<Version> {
+export class Version extends Model {
   @Column
   env: ENV;
 
