@@ -7,7 +7,7 @@ import { VersionPlanService } from 'src/version-plan/version-plan.service';
 export class ScheduleService {
   constructor(private readonly versionPlanService: VersionPlanService) {}
 
-  @Cron(CronExpression.EVERY_5_MINUTES)
+  @Cron(CronExpression.EVERY_HOUR)
   async createVersionPlans() {
     await this.versionPlanService.autoCreate();
   }
