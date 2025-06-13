@@ -11,8 +11,7 @@ export class ScheduleService {
     private readonly deploymentService: DeploymentService,
   ) {}
 
-  // @Cron(CronExpression.EVERY_HOUR)
-  @Cron(CronExpression.EVERY_MINUTE)
+  @Cron(CronExpression.EVERY_HOUR)
   async createVersionPlans() {
     await this.versionPlanService.autoCreate();
     await this.deploymentService.deployFront();
