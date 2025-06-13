@@ -6,6 +6,8 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { VersionModule } from './version/version.module';
 import { ScheduleService } from './schedule/schedule.service';
 import { VersionPlanService } from './version-plan/version-plan.service';
+import { DeploymentService } from './deployment/deployment.service';
+import { VercelService } from './deployment/vercel.service';
 
 @Module({
   imports: [
@@ -35,6 +37,11 @@ import { VersionPlanService } from './version-plan/version-plan.service';
     ScheduleModule.forRoot(),
     VersionModule,
   ],
-  providers: [ScheduleService, VersionPlanService],
+  providers: [
+    ScheduleService,
+    VersionPlanService,
+    DeploymentService,
+    VercelService,
+  ],
 })
 export class AppModule {}
