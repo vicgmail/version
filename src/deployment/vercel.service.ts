@@ -20,6 +20,7 @@ export class VercelService {
             repoId: process.env.VERCEL_DEPLOYMENT_REPO_ID,
             ref: process.env.VERCEL_DEPLOYMENT_BRANCH,
           },
+          target: 'production',
         },
         {
           headers: {
