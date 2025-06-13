@@ -3,3 +3,7 @@ export type CreateVersionDto = {
   minor: number;
   build: number;
 };
+
+export type UpdateVersionDto = {
+  inProgress: boolean;
+};

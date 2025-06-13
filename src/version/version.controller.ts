@@ -7,6 +7,11 @@ export class VersionController {
 
   @Get('/')
   async find(): Promise<string> {
-    return await this.versionService.actual();
+    return await this.versionService.actualVersion();
+  }
+
+  @Get('/deployment')
+  async findDeploymentVersion(): Promise<string> {
+    return await this.versionService.deploymentVersion();
   }
 }

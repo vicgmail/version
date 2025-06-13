@@ -1,4 +1,4 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
 import { ENV } from 'src/constants/env';
 
@@ -7,6 +7,13 @@ import { ENV } from 'src/constants/env';
   tableName: 'Version',
 })
 export class Version extends Model {
+  @Column({
+    type: DataType.UUID,
+    defaultValue: DataType.UUIDV4,
+    primaryKey: true,
+  })
+  id: string;
+
   @Column
   env: ENV;
 
@@ -21,4 +28,7 @@ export class Version extends Model {
 
   @Column({ defaultValue: true })
   isActive: boolean;
+
+  @Column({ defaultValue: false })
+  inProgress: boolean;
 }
